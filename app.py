@@ -15,9 +15,12 @@ http://127.0.0.1:5000/
 
 import traceback
 from flask import Flask, request, jsonify, render_template, Response, redirect, url_for
+import os
 
 # Crear el server Flask
 app = Flask(__name__)
+
+_port = os.environ.get('PORT', 5000)
 
 # Ruta que se ingresa por la ULR 127.0.0.1:5000
 @app.route("/")
@@ -71,4 +74,4 @@ if __name__ == '__main__':
     # Lanzar server
     #app.run(host="127.0.0.1", port=5000)
     
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=_port)
